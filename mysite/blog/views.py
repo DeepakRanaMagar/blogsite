@@ -3,7 +3,7 @@ from .models import Post
 from django.core.paginator import Paginator, EmptyPage,PageNotAnInteger
 # Create your views here.
 def post_list(request):
-    object_list = Post.publish.all()
+    object_list = Post.objects.filter(publish=True)
     paginator = Paginator(object_list, 3) #3posts in each pages
     page = request.GET.get('page')
     try:
