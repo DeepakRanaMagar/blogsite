@@ -1,6 +1,6 @@
 from pathlib import Path
 from dotenv import load_dotenv
-import os
+import os, smtplib
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -115,7 +115,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #SMTP server setup
 load_dotenv('.env.local')
+smtplib.SMTP('smtp.gmail.com', 587, timeout=3)
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-EMAIL_PORT = '2525'
+EMAIL_PORT = '467'
+EMAIL_USE_TLS = 'true'
