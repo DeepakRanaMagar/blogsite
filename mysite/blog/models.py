@@ -2,9 +2,6 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
-# from .models import Post, Comment 
-# from .forms import EmailPostForm, CommentForm 
-
 
 class PublishedManager(models.Manager):
     def get_queryset(self):
@@ -41,13 +38,12 @@ class Comment(models.Model):
     name = models.CharField(max_length=80)
     email = models.EmailField()
     body = models.TextField()
-    created = models.DateTimeField(auto_now_add = True)
+    created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    active = models.BooleanField(default = True)
+    active = models.BooleanField(default=True)
     
     class Meta:
         ordering = ('created',)
         
     def __str__(self):
         return 'Comment by {} on {}'.format(self.name, self.post)
-    
